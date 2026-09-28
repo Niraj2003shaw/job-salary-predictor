@@ -16,9 +16,7 @@ The application takes information such as job title, skills, experience, locatio
 ## 🚀 Live Demo
 
 🔗 **Live Application:**  
-[Open Job Salary Predictor & Skill Analyzer](YOUR_STREAMLIT_APP_URL)
-
-> Replace `YOUR_STREAMLIT_APP_URL` with your deployed Streamlit application URL.
+https://job-salary-predictor-tesijz6bump8tece2ymfhp.streamlit.app/
 
 ---
 
