@@ -461,8 +461,18 @@ if predict_button:
 )
 
     salary = result["predicted_salary"]
-    predicted_band = result["predicted_band"]
     band_probabilities = result["band_probabilities"]
+
+    if salary < 300000:
+        predicted_band = "0–3 LPA"
+    elif salary < 600000:
+        predicted_band = "3–6 LPA"
+    elif salary < 1000000:
+        predicted_band = "6–10 LPA"
+    elif salary < 2000000:
+        predicted_band = "10–20 LPA"
+    else:
+        predicted_band = "20+ LPA"
 
 
 
