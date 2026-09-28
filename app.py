@@ -272,9 +272,6 @@ st.markdown(
 # DATA
 # --------------------------------------------------
 
-DATA_PATH = "data/raw/indian_jobs.xlsx"
-
-
 SKILL_DATA_PATH = "data/deployment/skill_data.csv"
 
 @st.cache_data
@@ -302,6 +299,22 @@ st.markdown(
 )
 
 st.divider()
+
+def format_skill_name(skill):
+    special_names = {
+        "sql": "SQL",
+        "aws": "AWS",
+        "api": "API",
+        "apis": "APIs",
+        "excel": "Excel",
+        "python": "Python",
+        "power bi": "Power BI",
+        "machine learning": "Machine Learning",
+        "deep learning": "Deep Learning",
+        "tableau": "Tableau",
+    }
+
+    return special_names.get(skill.lower(), skill.title())
 
 
 # --------------------------------------------------
@@ -519,6 +532,10 @@ if predict_button:
             "ML Predicted Salary",
             f"₹{salary_lpa:.2f} LPA"
         )
+    st.metric(
+    "Salary Band",
+    predicted_band
+)
 
     # ------------------------------
     # SKILL MATCH
@@ -567,7 +584,7 @@ if predict_button:
         for i, (skill, count) in enumerate(result["matched_skills"]):
 
             with cols[i % 3]:
-                st.success(f"✓ {skill.title()}")
+                st.success(f"✓ {format_skill_name(skill)}")
 
     else:
         st.info("No matching skills found.")
@@ -605,7 +622,7 @@ if predict_button:
 
             with col1:
                 st.markdown(
-                    f"**{icon} {skill.title()}**"
+                    f"**{icon} {format_skill_name(skill)}**"
                 )
 
                 st.caption(
