@@ -10,7 +10,7 @@ from src.skill_analyzer import (
     analyze_skill_gap,
     add_skill_priority
 )
-from src.preprocessing import load_data, preprocess_data
+import pandas as pd
 
 
 # --------------------------------------------------
@@ -275,12 +275,11 @@ st.markdown(
 DATA_PATH = "data/raw/indian_jobs.xlsx"
 
 
+SKILL_DATA_PATH = "data/deployment/skill_data.csv"
+
 @st.cache_data
 def get_data():
-    df = load_data(DATA_PATH)
-    df = preprocess_data(df)
-    return df
-
+    return pd.read_csv(SKILL_DATA_PATH)
 
 df = get_data()
 
